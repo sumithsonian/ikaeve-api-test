@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 //
 import { TokenController } from './token/token.controller';
 //
@@ -24,7 +22,6 @@ import { TournamentsController as TournamentSeriesTournamentsController } from '
 @Module({
   imports: [],
   controllers: [
-    AppController,
     TokenController,
     //
     UsersController,
@@ -44,6 +41,6 @@ import { TournamentsController as TournamentSeriesTournamentsController } from '
     TournamentSeriesController,
     TournamentSeriesTournamentsController,
   ],
-  providers: [AppService],
+  providers: [],
 })
 export class AppModule {}
