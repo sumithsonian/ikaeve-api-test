@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 //
+import { TokenController } from './token/token.controller';
+//
 import { UsersController } from './users/users.controller';
 import { TournamentsController as UsersTournamentsController } from './users/tournaments/tournaments.controller';
 import { TeamsController as UsersTeamsController } from './users/teams/teams.controller';
@@ -23,6 +25,7 @@ import { TournamentsController as TournamentSeriesTournamentsController } from '
   imports: [],
   controllers: [
     AppController,
+    TokenController,
     //
     UsersController,
     UsersTournamentsController,
