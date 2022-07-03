@@ -1,4 +1,9 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 
 @Controller('tournaments')
-export class TournamentsController {}
+export class TournamentsController {
+  @Get()
+  findAll(): string {
+    return 'This action returns all tournaments';
+  }
+}
