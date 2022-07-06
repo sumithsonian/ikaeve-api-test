@@ -47,10 +47,10 @@ enum TournamentMatching {
 
 //シーズンマスタ
 enum Season {
+  EARLY_SPRING
   SPRING
   SUMMER
   FALL
-  WINTER
   ANNUAL
 }
 
