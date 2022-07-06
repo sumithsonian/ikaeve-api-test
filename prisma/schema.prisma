@@ -125,27 +125,25 @@ model User {
 
 // チーム
 model Team {
-  id                    BigInt           @id @default(autoincrement())
-  name                  String           @db.VarChar(255) // 名前
-  permanentUrl          String           @map("permanent_url") @db.VarChar(1023) // 固定URL
-  imageUrl              String           @map("image_url") @db.VarChar(1023) // アイコン画像
-  comment               String           @db.VarChar(1023) // コメント
-  twitterUrl            String           @map("twitter_url") @db.VarChar(1023) // Twitter URL
-  discordUrl            String           @map("discord_url") @db.VarChar(1023) // Discord URL
-  privacy               Privacy
-  tournamentAlphaTeam   TournamentMatch  @relation("alphaTeam", fields: [tournamentAlphaTeamId], references: [id])
-  tournamentAlphaTeamId BigInt           @unique @map("tournament_alpha_team_id")
-  tournamentBravoTeam   TournamentMatch  @relation("bravoTeam", fields: [tournamentBravoTeamId], references: [id])
-  tournamentBravoTeamId BigInt           @unique @map("tournament_bravo_team_id")
-  tournament            Tournament[]
-  teamPoint             TeamPoint[]
-  tournamentTeam        TournamentTeam[]
-  teamUser              TeamUser[]
-  teamRank              TeamRank[]
-  series                Series[]
-  editedAt              DateTime         @map("edited_at")
-  createdAt             DateTime         @default(now()) @map("created_at")
-  updatedAt             DateTime         @updatedAt @map("updated_at")
+  id                         BigInt            @id @default(autoincrement())
+  name                       String            @db.VarChar(255) // 名前
+  permanentUrl               String            @map("permanent_url") @db.VarChar(1023) // 固定URL
+  imageUrl                   String            @map("image_url") @db.VarChar(1023) // アイコン画像
+  comment                    String            @db.VarChar(1023) // コメント
+  twitterUrl                 String            @map("twitter_url") @db.VarChar(1023) // Twitter URL
+  discordUrl                 String            @map("discord_url") @db.VarChar(1023) // Discord URL
+  privacy                    Privacy
+  tournament                 Tournament[]
+  teamPoint                  TeamPoint[]
+  tournamentTeam             TournamentTeam[]
+  TournamentMatchAtAlphaTeam TournamentMatch[] @relation("alphaTeam")
+  TournamentMatchAtBravoTeam TournamentMatch[] @relation("bravoTeam")
+  teamUser                   TeamUser[]
+  teamRank                   TeamRank[]
+  series                     Series[]
+  editedAt                   DateTime          @map("edited_at")
+  createdAt                  DateTime          @default(now()) @map("created_at")
+  updatedAt                  DateTime          @updatedAt @map("updated_at")
 
   @@map("teams")
 }
@@ -271,8 +269,10 @@ model TournamentMatch {
   block           String     @db.VarChar(255) // ブロック
   round           Int // ラウンド数
   match           Int // 試合数
-  alphaTeam       Team?      @relation("alphaTeam") // アルファチーム
-  bravoTeam       Team?      @relation("bravoTeam") // ブラボーチーム
+  alphaTeam       Team       @relation("alphaTeam", fields: [alphaTeamId], references: [id])
+  alphaTeamId     BigInt     @map("alpha_team_id")
+  bravoTeam       Team       @relation("bravoTeam", fields: [bravoTeamId], references: [id])
+  bravoTeamId     BigInt     @map("bravo_team_id")
   alphaTeamResult Int        @map("alpha_team_result") // アルファチーム勝利数
   bravoTeamResult Int        @map("bravo_team_result") // ブロボーチーム勝利数
   createdAt       DateTime   @default(now()) @map("created_at")
