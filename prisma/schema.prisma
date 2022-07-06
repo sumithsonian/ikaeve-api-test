@@ -174,14 +174,15 @@ model Tournament {
   member_num                Int //チーム人数
   is_qualifying_required    Boolean //予選有無
   qualifying_system         TournamentSystem //予選形式
+  qualifying_matching       TournamentMatching //組み合わせ
   qualifying_point          Int //予選先取点
   qualifying_max_team_num   Int //予選1ブロック当たりの最大チーム数
   qualifying_pass_order     Int //予選通過順位
-  main_system               TournamentSystem //本戦形式
-  main_point                Int //本戦先取点
+  finals_system             TournamentSystem //本戦形式
+  finals_matching           TournamentMatching //組み合わせ
+  finals_point              Int //本戦先取点
   is_final_rule_change      Boolean //決勝戦ルール変更有無
   final_point               Int //決勝戦先取点
-  matching                  TournamentMatching //組み合わせ
   is_best8_shuffled         Boolean //ベスト8シャッフル有無
   is_3rd_place_playoff      Boolean //3位決定戦有無
   approval_status           TournamentApplyStatus //公式大会申請ステータス
