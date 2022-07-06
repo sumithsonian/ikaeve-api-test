@@ -68,8 +68,8 @@ enum Stage {
   FINAL //決勝戦
 }
 
-//公式大会申請ステータスマスタ
-enum TournamentApplyStatus {
+//公式大会ステータスマスタ
+enum SeriesApprovalStatus {
   APPLYING //申請済み
   APPROVED //承認済み
   REJECTED //棄却
@@ -93,7 +93,7 @@ model Series {
   team            Team? //チーム
   tournaments     Tournament            @relation(fields: [tournaments_id], references: [id])
   tournaments_id  BigInt                @unique
-  approval_status TournamentApplyStatus //公式大会申請ステータス
+  approval_status SeriesApprovalStatus //公式大会承認ステータス
   created_at      DateTime              @default(now())
   updated_at      DateTime              @updatedAt
 
