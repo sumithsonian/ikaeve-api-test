@@ -34,7 +34,7 @@ enum RankPosition {
 enum TournamentSystem {
   SINGLE_ELIMINATION //シングルエリミネーション
   DOUBLE_ELIMINATION //ダブルエリミネーション
-  LEAGUE //リーグ（シングルラウンドロビン）
+  ROUND_ROBIN //リーグ（シングルラウンドロビン）
   SWISS_DRAW //スイスドロー
 }
 
