@@ -77,17 +77,17 @@ enum TournamentApplyStatus {
 
 //シリーズ
 model Series {
-  id             BigInt     @id @default(autoincrement())
-  name           String     @db.VarChar(255) //名称
-  permanent_url  String     @db.VarChar(1023) //固定URL
-  image_url      String     @db.VarChar(1023) //シリーズ画像
-  user           User? //ユーザー
-  team           Team? //チーム
-  tournaments    Tournament @relation(fields: [tournaments_id], references: [id])
-  tournaments_id BigInt     @unique
-  approval_status           TournamentApplyStatus //公式大会申請ステータス
-  created_at     DateTime   @default(now())
-  updated_at     DateTime   @updatedAt
+  id              BigInt                @id @default(autoincrement())
+  name            String                @db.VarChar(255) //名称
+  permanent_url   String                @db.VarChar(1023) //固定URL
+  image_url       String                @db.VarChar(1023) //シリーズ画像
+  user            User? //ユーザー
+  team            Team? //チーム
+  tournaments     Tournament            @relation(fields: [tournaments_id], references: [id])
+  tournaments_id  BigInt                @unique
+  approval_status TournamentApplyStatus //公式大会申請ステータス
+  created_at      DateTime              @default(now())
+  updated_at      DateTime              @updatedAt
 
   @@map("series")
 }
@@ -156,20 +156,20 @@ model Team {
 }
 
 model Tournament {
-  id                        BigInt                @id @default(autoincrement())
-  name                      String                @db.VarChar(255) //大会名
-  permanent_url             String                @db.VarChar(1023) //固定URL
-  image_url                 String                @db.VarChar(1023) //大会画像
+  id                        BigInt              @id @default(autoincrement())
+  name                      String              @db.VarChar(255) //大会名
+  permanent_url             String              @db.VarChar(1023) //固定URL
+  image_url                 String              @db.VarChar(1023) //大会画像
   started_at                DateTime //募集開始日時
   ended_at                  DateTime //募集終了日時
   opened_at                 DateTime //開催日時
   closed_at                 DateTime //終了日時
-  description               String                @db.VarChar(1023) //大会概要
+  description               String              @db.VarChar(1023) //大会概要
   game_title                GameTitle //ゲームタイトル
   series                    Series? //シリーズ
   user                      User? //主催者ユーザ
   team                      Team? //主催者チーム
-  streaming_url             String                @db.VarChar(1023) //配信URL
+  streaming_url             String              @db.VarChar(1023) //配信URL
   team_num_max              Int //募集チーム数(最小)
   team_num_min              Int //募集チーム数(最大)
   member_num                Int //チーム人数
@@ -188,20 +188,20 @@ model Tournament {
   is_3rd_place_playoff      Boolean //3位決定戦有無
   privacy                   Privacy //公開設定
   status                    Status //大会ステータス
-  tournament_user           TournamentUser        @relation(fields: [tournament_user_id], references: [id])
-  tournament_user_id        BigInt                @unique
-  user_points               UserPoint             @relation(fields: [user_points_id], references: [id])
-  user_points_id            BigInt                @unique
-  team_points               TeamPoint             @relation(fields: [team_points_id], references: [id])
-  team_points_id            BigInt                @unique
-  tournament_team           TournamentTeam        @relation(fields: [tournament_team_id], references: [id])
-  tournament_team_id        BigInt                @unique
-  tournament_match_rules    TournamentMatchRule   @relation(fields: [tournament_match_rules_id], references: [id])
-  tournament_match_rules_id BigInt                @unique
-  tournament_matchs         TournamentMatch       @relation(fields: [tournament_matchs_id], references: [id])
-  tournament_matchs_id      BigInt                @unique
-  created_at                DateTime              @default(now())
-  updated_at                DateTime              @updatedAt
+  tournament_user           TournamentUser      @relation(fields: [tournament_user_id], references: [id])
+  tournament_user_id        BigInt              @unique
+  user_points               UserPoint           @relation(fields: [user_points_id], references: [id])
+  user_points_id            BigInt              @unique
+  team_points               TeamPoint           @relation(fields: [team_points_id], references: [id])
+  team_points_id            BigInt              @unique
+  tournament_team           TournamentTeam      @relation(fields: [tournament_team_id], references: [id])
+  tournament_team_id        BigInt              @unique
+  tournament_match_rules    TournamentMatchRule @relation(fields: [tournament_match_rules_id], references: [id])
+  tournament_match_rules_id BigInt              @unique
+  tournament_matchs         TournamentMatch     @relation(fields: [tournament_matchs_id], references: [id])
+  tournament_matchs_id      BigInt              @unique
+  created_at                DateTime            @default(now())
+  updated_at                DateTime            @updatedAt
 
   @@map("tournaments")
 }
