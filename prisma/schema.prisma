@@ -175,6 +175,7 @@ model Tournament {
   description               String              @db.VarChar(1023) //大会概要
   game_title                GameTitle //ゲームタイトル
   series                    Series? //シリーズ
+  user                      User? //主催者ユーザ
   team                      Team? //主催者チーム
   streaming_url             String              @db.VarChar(1023) //配信URL
   team_num_max              Int //募集チーム数(最小)
