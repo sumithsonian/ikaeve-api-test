@@ -41,9 +41,8 @@ enum TournamentSystem {
 //トーナメント組み合わせマスタ
 enum TournamentMatching {
   AUTO //自動(1位昇順、2位降順)
-  APPLICATION //申請順
-  X_POWER //Xパワー順
-  RANDOM //シャッフル
+  RATING //レーティング
+  SHUFFLE //シャッフル
 }
 
 //シーズンマスタ
