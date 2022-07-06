@@ -75,6 +75,14 @@ enum TournamentApplyStatus {
   REJECTED //棄却
 }
 
+//ティアマスタ
+enum Tear {
+  X
+  S
+  A
+  B
+}
+
 //シリーズ
 model Series {
   id              BigInt                @id @default(autoincrement())
