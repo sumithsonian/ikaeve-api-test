@@ -85,6 +85,7 @@ model Series {
   team           Team? //チーム
   tournaments    Tournament @relation(fields: [tournaments_id], references: [id])
   tournaments_id BigInt     @unique
+  approval_status           TournamentApplyStatus //公式大会申請ステータス
   created_at     DateTime   @default(now())
   updated_at     DateTime   @updatedAt
 
@@ -185,7 +186,6 @@ model Tournament {
   final_point               Int //決勝戦先取点
   is_best8_shuffled         Boolean //ベスト8シャッフル有無
   is_3rd_place_playoff      Boolean //3位決定戦有無
-  approval_status           TournamentApplyStatus //公式大会申請ステータス
   privacy                   Privacy //公開設定
   status                    Status //大会ステータス
   tournament_user           TournamentUser        @relation(fields: [tournament_user_id], references: [id])
