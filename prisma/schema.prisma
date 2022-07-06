@@ -64,7 +64,7 @@ enum Status {
 //大会ステージマスタ
 enum Stage {
   QUALIFYING //予選
-  MAIN_RACE //本戦
+  FINALS //本戦
   FINAL //決勝戦
 }
 
